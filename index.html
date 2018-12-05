@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>units</title>
+    <link rel="stylesheet" type="text/css" href="./css/jquery.fullpage.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--
+      <script type="text/javascript" src="./js/scrolloverflow.min.js"></script>
+    -->
+    <script type="text/javascript" src="./js/jquery.fullpage.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <!-- <div id="header">Units in CSS</div> -->
+    <div id="fullpage">
+      <div class="section">
+        <h1>absolute units</h1>
+        <div class="slide">
+          <h2>absolute units: px</h2>
+          <h3>Слово "пиксель" имеет три значения:</h3>
+          <ul>
+            <li>Элемент матрицы экрана</li>
+            <li>
+              Device-independent pixel (dip) - масштабированный, «кажущийся»
+              размер пикселя
+            </li>
+            <li>CSS-пиксель</li>
+          </ul>
+          <p>
+            Вам важны только CSS-пиксели. Именно эти пиксели будут определять
+            браузерам.
+          </p>
+          <p>
+            Вне CSS растровые изображния описываюся в пикслеях - координаты
+            точки и цвет. Пропорции ширины и высоты также задаются в пикселях.
+            Это помогает точно отобразить размеры и пропорции изображений с
+            помощью CSS.
+          </p>
+          <p>
+            В браузере все, что отображено кратно пикселю, всегда будет иметь
+            четкие и ровные края без размытия.
+          </p>
+        </div>
+        <div class="slide">
+          <img class="img-rfloat" src="./img/zoom.png" alt="zoom" width="600" />
+          <p>
+            Масштаб: это изменение пикселей в размере (т.е. количество пикселей
+            то же).
+          </p>
+          <p>
+            При масштабе в 100%, один CSS-пиксель точно равен одному пикселю
+            устройства.
+          </p>
+          <p>
+            Изменение масштаба вызывает округление (
+            <span class="red">возможны артефакты</span>):
+          </p>
+          <table>
+            <tr>
+              <th>px</th>
+              <th>zoom</th>
+              <th>~px</th>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>100%</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>110%</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>110%</td>
+              <td class="red">16.5</td>
+            </tr>
+          </table>
+
+          <p>
+            В
+            <a href="https://codepen.io/Gorbulin/pen/pLLRbE" target="_blank"
+              >этом</a
+            >
+            примере в браузуре FireFox при zoom 190% видно округление в меньшую
+            сторону.
+          </p>
+        </div>
+        <div class="slide">
+          <h2>absolute units: mm/cm/in</h2>
+          <p>
+            По соображениям поддержки в браузерах существуют устаревшие единицы
+            измерения - милиметры, сантиметры и дюймы.
+          </p>
+          <p>
+            Важно понимать, что сантиметры и милиметры CSS связаны с CSS
+            пикселями, т.е. 24in экран монитора (60cm) может иметь то же
+            разрешение в CSS пикселях как и 8in экран планшета.
+          </p>
+          <p>
+            Между собой абсолютные величины связаны таким соотношением: 96px =
+            1in = 2.54cm = 25.4mm = 72pt = 6pc
+          </p>
+          <p>
+            Измерейте школьной линейкой ширину блоков, выведенных ниже на
+            экране. Ширина будет различой на различных экранах, но соотношение
+            абсолютных единиц будет всегда точным.
+          </p>
+          <h4>WIDTH:</h4>
+          <div class="wrp">
+            <div class="box px">96px</div>
+            <div class="box in">1in</div>
+            <div class="box cm">2.54cm</div>
+            <div class="box mm">25.4mm</div>
+            <div class="box pt">72pt</div>
+            <div class="box pc">6pc</div>
+          </div>
+        </div>
+        <div class="slide">
+          <h2>absolute units: pt/pc</h2>
+          <p>
+            Для вывода на печать желательно создавать специальные правила CSS на
+            основе типографских единиц - пунктов и пик. Также есть и другие
+            правила, подробности -
+            <a href="https://frontender.info/tips-tricks-print-style-sheets/"
+              >здесь</a
+            >
+          </p>
+          <p>
+            Правила для печати помещаются в специальный контейнер внутри CSS
+            файла: <span class="red">@media print { }</span>
+          </p>
+          <p>Пункты и пики связаны с CSS пикселями:</p>
+          <table>
+            <tr>
+              <th>pc</th>
+              <th>pt</th>
+              <th>px</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>12</td>
+              <td>16</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <h1>relative units</h1>
+        <div class="slide">
+          <h2>relative units: vh/vw</h2>
+          <p>
+            <span class="accent">VIEWPORT</span> или область просмотра браузера
+            точно равна окну браузера.
+          </p>
+          <p>
+            Точнее <span class="accent">viewport</span> равен размерам
+            внутренней части окна браузера, за исключением панелей и границ
+            самого окна.
+          </p>
+          <p>
+            VIEWPORT не является частью HTML, поэтому вы не можете влиять на
+            него CSS-правилами.
+          </p>
+          <p>
+            Однако мы можем устанавливать размер элементов HTML относительно
+            размера вьюпорта.
+          </p>
+          <ul>
+            <li>
+              1 <span class="accent">vh</span> - единица, равная 1/100'ой высоты
+              <b>viewport</b>
+            </li>
+            <li>
+              1 <span class="accent">vw</span> - единица, равная 1/100'ой ширины
+              <b>viewport</b>
+            </li>
+          </ul>
+        </div>
+        <div class="slide">
+          <h2>relative units: rem/em</h2>
+          <h3>Единицы измерения относительно размеров шрифта</h3>
+          <p>
+            <span class="accent">REM</span> это размер относительно шрифта,
+            заданного в теге <b>html</b>. По умолчанию браузер присваивает
+            <b>html</b> шрифт размером <span class="accent">16px</span>.
+            Следовательно <span class="accent">1rem = 16px</span> по умолчанию.
+          </p>
+          <p>
+            Но пользователь может переопределить дефолтный размер шрифта в своем
+            браузере и поэтому <b>всегда</b> стоит явно определить размер шрифта
+            в <b>html</b>
+          </p>
+          <p>
+            <span class="accent">EM</span> это размер относительно шрифта,
+            заданного непосредственным предком элемента.
+          </p>
+          <p>
+            Следует избегать использования <span class="accent">EM</span> из-за
+            эффекта умножения:
+          </p>
+          <pre>
+          <code>
+            <div style="font-size:12px">&lt;div style="font-size: 12px" &gt; <span class="accent">12px</span>
+                 <div style="font-size:1.5em">&lt;div style="font-size:1.5em"&gt;       <span class="accent">18px</span>
+                      <div style="font-size:1.5em">&lt;div style="font-size:1.5em"&gt;   <span class="accent">27px</span>
+                           <div style="font-size:1.5em">&lt;div style="font-size:1.5em"&gt;<span class="accent">40.5px</span>&lt;/div&gt
+                                 </div> &lt;/div&gt  </div> &lt;/div&gt  </div>  &lt;/div&gt
+            </div>
+          </code>
+        </pre>
+        </div>
+        <div class="slide">
+          <h2>relative units: 1/%</h2>
+          <h4>Числовой коэффициент.</h4>
+          <p>
+            Для <span class="accent">line-height</span> можно задать
+            относительное значение, выраженное числом без единиц измерения. Это
+            важно использовать, т.к. если задать значение в любых других
+            единицах, то значение <span class="accent">line-height</span> будет
+            <b>наследоваться.</b>
+          </p>
+          <h4>Проценты <span class="accent">%</span></h4>
+          <p>
+            Многие (но не все, как например border) свойства могут задаваться с
+            помощью процентов.
+          </p>
+          <p>
+            В таких случаях всегда следует точно знать от чего беруться
+            проценты. Например три совершенно разные источники для вычислений:
+          </p>
+          <ul>
+            <li>height - % от высоты родительского элемента</li>
+            <li>
+              padding-top/bottom и margin-top/bottom - % от ширины родительского
+              элемента
+            </li>
+            <li>transform: translate - от размеров элемента</li>
+          </ul>
+        </div>
+      </div>
+      <!--
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+      -->
+    </div>
+    <!-- <div class="footer"> Kharkiv, 2018 &copy; </div> -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>
