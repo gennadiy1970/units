@@ -7,9 +7,9 @@
     <title>units</title>
     <link rel="stylesheet" type="text/css" href="./css/jquery.fullpage.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--
-      <script type="text/javascript" src="./js/scrolloverflow.min.js"></script>
-    -->
+
+    <script type="text/javascript" src="./js/scrolloverflow.min.js"></script>
+
     <script type="text/javascript" src="./js/jquery.fullpage.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -181,6 +181,23 @@
               <b>viewport</b>
             </li>
           </ul>
+          <div class="footer">
+            Gorbulin.G.M. Kharkiv, <span class="year"></span>&copy;
+          </div>
+        </div>
+        <div class="slide">
+          <h2>relative units: vmin / vmax</h2>
+          <p>
+            То же, что и vh/vw , но применяются браузером в зависимости от того,
+            что больше - ширина или выста.
+          </p>
+          <p>
+            Удобно использовать для
+            <a href="https://gennadiy1970.github.io/picture-vs-img/text.html"
+              >задания размера шрифта</a
+            >
+            при изменяющемя размере <span class="accent">VIEWPORT</span>.
+          </p>
         </div>
         <div class="slide">
           <h2>relative units: rem/em</h2>
@@ -246,10 +263,11 @@
       </div>
       <!--
         <div class="section">Some section</div>
-        <div class="section">Some section</div>
       -->
     </div>
-    <!-- <div class="footer"> Kharkiv, 2018 &copy; </div> -->
+    <!-- <div class="footer">
+      Gorbulin.G.M. Kharkiv, <span class="year"></span>&copy;
+    </div> -->
     <script src="./js/app.js"></script>
   </body>
 </html>
